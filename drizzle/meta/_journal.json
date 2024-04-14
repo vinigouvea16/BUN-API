@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1713048365497,
-      "tag": "0000_normal_junta",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1713048581577,
-      "tag": "0001_hot_morbius",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1713048969880,
-      "tag": "0002_silly_spirit",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1713049096984,
-      "tag": "0003_soft_exiles",
+      "when": 1713052343279,
+      "tag": "0000_wet_lady_vermin",
       "breakpoints": true
     }
   ]
