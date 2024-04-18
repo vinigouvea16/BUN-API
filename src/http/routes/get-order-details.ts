@@ -4,9 +4,9 @@ import { UnauthorizedError } from '../errors/unauthorized-error'
 import { db } from '../../db/connection'
 
 export const getOrderDetails = new Elysia().use(auth).get(
-  '/orders/:orderId',
+  '/orders/:id',
   async ({ getCurrentUser, params, set }) => {
-    const { orderId } = params
+    const { id: orderId } = params
     const { restaurantId } = await getCurrentUser()
 
     if (!restaurantId) {
@@ -55,7 +55,7 @@ export const getOrderDetails = new Elysia().use(auth).get(
   },
   {
     params: t.Object({
-      orderId: t.String(),
+      id: t.String(),
     }),
   },
 )
