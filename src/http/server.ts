@@ -17,8 +17,26 @@ import { getMonthOrdersAmount } from './routes/get-month-orders-amount'
 import { getMonthCanceledOrdersAmount } from './routes/get-month-canceled-orders-amount'
 import { getPopularProducts } from './routes/get-popular-products'
 import { getDailyReceiptInPeriod } from './routes/get-daily-receipt-in-period'
-
+import { cors } from '@elysiajs/cors'
+import { updateProfile } from './routes/update-profile'
+import { updateMenu } from './routes/update-menu'
 const app = new Elysia()
+  .use(
+    cors({
+      credentials: true,
+      allowedHeaders: ['content-type'],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+      origin: (request): boolean => {
+        const origin = request.headers.get('origin')
+
+        if (!origin) {
+          return false
+        }
+
+        return true
+      },
+    }),
+  )
   .use(registerRestaurant)
   .use(sendAuthLink)
   .use(authenticateFromLink)
@@ -37,6 +55,8 @@ const app = new Elysia()
   .use(getMonthCanceledOrdersAmount)
   .use(getPopularProducts)
   .use(getDailyReceiptInPeriod)
+  .use(updateProfile)
+  .use(updateMenu)
   .onError(({ code, error, set }) => {
     switch (code) {
       case 'VALIDATION': {
