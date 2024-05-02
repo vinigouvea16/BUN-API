@@ -12,10 +12,15 @@ const jwtPayload = t.Object({
 export const auth = new Elysia()
   .error({
     UNAUTHORIZED: UnauthorizedError,
+    NOT_A_MANAGER: NotAManagerError,
   })
   .onError(({ error, code, set }) => {
     switch (code) {
       case 'UNAUTHORIZED': {
+        set.status = 401
+        return { code, message: error.message }
+      }
+      case 'NOT_A_MANAGER': {
         set.status = 401
         return { code, message: error.message }
       }
